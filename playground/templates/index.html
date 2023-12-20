@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Current Time</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        .button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Current Time</h1>
+    <button class="button" onclick="getTime('newyork')">New York</button>
+    <button class="button" onclick="getTime('seoul')">Seoul</button>
+
+    <script>
+        function getTime(city) {
+            fetch(`/time/${city}`)
+                .then(response => response.text())
+                .then(time => {
+                    alert(`Current time in ${city}: ${time}`);
+                });
+        }
+    </script>
+</body>
+</html>
